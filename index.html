@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h2>Welcome to the Homepage</h2>
+    <p>Enter your name to go to your profile:</p>
+    <form onsubmit="return goToProfile();">
+        <input type="text" id="username" placeholder="Enter name..." required>
+        <button type="submit">Go to Profile</button>
+    </form>
+    <script>
+        function goToProfile() {
+            const name = document.getElementById('username').value;
+            const url = "{{ url_for('profile', username='USERNAME') }}".replace('USERNAME', name);
+            window.location.href = url;
+            return false;
+        }
+    </script>
+{% endblock %}
